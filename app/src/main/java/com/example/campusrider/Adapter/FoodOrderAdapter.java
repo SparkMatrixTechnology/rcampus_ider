@@ -40,6 +40,8 @@ public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.View
         holder.binding.date.setText(foodOrderModel.getOrder_date());
         holder.binding.address.setText(foodOrderModel.getAddress());
         holder.binding.orderId.setText(""+foodOrderModel.getId());
+        holder.binding.cusName.setText(foodOrderModel.getCustomer_name());
+        holder.binding.cusPhone.setText("+880"+foodOrderModel.getCustomer_phone());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

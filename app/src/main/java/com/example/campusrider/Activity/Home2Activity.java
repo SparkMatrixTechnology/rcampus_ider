@@ -75,7 +75,7 @@ public class Home2Activity extends AppCompatActivity {
                 Intent intent=new Intent(Home2Activity.this, OrderActivity.class);
                 intent.putExtra("rider_id",id);
                 intent.putExtra("type_name",type);
-                intent.putExtra("status",2);
+                intent.putExtra("status",5);
                 startActivity(intent);
             }
         });

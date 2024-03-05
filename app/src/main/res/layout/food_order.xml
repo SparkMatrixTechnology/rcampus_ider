@@ -10,16 +10,17 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/shop_img"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+        android:layout_width="76dp"
+        android:layout_height="67dp"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/coffe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035"
         app:riv_corner_radius="24dp" />
 
     <TextView
@@ -32,19 +33,20 @@
         android:singleLine="true"
         android:text="name"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/orderId"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/shop_img"
         app:layout_constraintTop_toTopOf="@+id/shop_img"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
         android:drawableLeft="@drawable/baseline_location_color_on_24"
         android:drawablePadding="5dp"
         android:ellipsize="end"
@@ -54,12 +56,10 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/shop_name"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="@+id/shop_name"
-        app:layout_constraintTop_toBottomOf="@+id/shop_name"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/cusPhone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cusPhonet"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/orderId"
@@ -93,9 +93,69 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/address"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toEndOf="@+id/shop_img"
         app:layout_constraintTop_toBottomOf="@+id/shop_name"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/cusNameT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Name: "
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/date"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/cusName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans"
+        android:text="name"
+        android:textColor="#125B95"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cusNameT"
+        app:layout_constraintStart_toEndOf="@+id/cusNameT"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/cusPhonet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Contact: "
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cusNameT"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cusNameT"
+        app:layout_constraintTop_toBottomOf="@+id/cusNameT" />
+
+    <TextView
+        android:id="@+id/cusPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/open_sans"
+        android:text="phone"
+        android:textColor="#125B95"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cusPhonet"
+        app:layout_constraintStart_toEndOf="@+id/cusPhonet"
+        app:layout_constraintTop_toTopOf="@+id/cusPhonet"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

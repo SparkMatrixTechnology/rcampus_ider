@@ -54,13 +54,25 @@ public class OrderActivity extends AppCompatActivity {
 
         if(type.equals("Food Delivery")){
             getStatus(status);
-            orderModelList=new ArrayList<>();
-            foodOrderAdapter=new FoodOrderAdapter(getApplicationContext(),orderModelList);
-            rec.setAdapter(foodOrderAdapter);
-            getFoodOrderList(id,status);
-            rec.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
-            rec.setHasFixedSize(true);
-            rec.setNestedScrollingEnabled(false);
+            if(status==4 || status==5){
+                orderModelList=new ArrayList<>();
+                foodOrderAdapter=new FoodOrderAdapter(getApplicationContext(),orderModelList);
+                rec.setAdapter(foodOrderAdapter);
+                getFoodOrderList1(status);
+                rec.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+                rec.setHasFixedSize(true);
+                rec.setNestedScrollingEnabled(false);
+            }
+            else {
+                orderModelList=new ArrayList<>();
+                foodOrderAdapter=new FoodOrderAdapter(getApplicationContext(),orderModelList);
+                rec.setAdapter(foodOrderAdapter);
+                getFoodOrderList(id,status);
+                rec.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+                rec.setHasFixedSize(true);
+                rec.setNestedScrollingEnabled(false);
+            }
+
 
         }
         if(type.equals("Grocery Delivery")){
@@ -98,6 +110,65 @@ public class OrderActivity extends AppCompatActivity {
 
                     }
 
+                    else {
+
+                    }
+
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        queue.add(request);
+    }
+
+    public void getFoodOrderList1(int status) {
+        RequestQueue queue= Volley.newRequestQueue(OrderActivity.this);
+        StringRequest request=new StringRequest(Request.Method.GET, "http://www.campusriderbd.com/Customer/rider/orders.php?type1=food1&order_status1=" +status, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.e("err",response);
+                    JSONObject mainObj = new JSONObject(response);
+                    if(mainObj.getString("status").equals("success")){
+                        JSONArray order_array=mainObj.getJSONArray("Order_list");
+                        for(int i=0;i<order_array.length();i++){
+                            JSONObject object=order_array.getJSONObject(i);
+                            OrderModel orderModel=new OrderModel(
+                                    object.getInt("id"),
+                                    object.getInt("customer_id"),
+                                    object.getInt("vendor_id"),
+                                    object.getString("address"),
+                                    object.getInt("cost"),
+                                    object.getInt("delivery_fee"),
+                                    object.getInt("total_price"),
+                                    object.getString("comment"),
+                                    object.getString("payment_type"),
+                                    object.getString("payment_status"),
+                                    object.getString("order_status"),
+                                    object.getString("order_date"),
+                                    object.getInt("rider_id"),
+                                    object.getString("customer_name"),
+                                    object.getString("customer_phone"),
+                                    object.getString("vendor_name"),
+                                    Constant.IMAGE_URL+object.getString("shop_image"),
+                                    object.getString("shop_address")
+                            );
+                            orderModelList.add(orderModel);
+                        }
+                        foodOrderAdapter.notifyDataSetChanged();
+                    }
+                    else if(mainObj.getString("status").equals("failed")) {
+                        text.setVisibility(View.VISIBLE);
+                    }
                     else {
 
                     }
